@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Platform } from 'react-native';
 import axios from 'axios';
 import qs from 'qs';
 import startMainApp from '../../screens/startMainApp';
@@ -12,10 +12,10 @@ import {
 } from './types';
 import App from '../../App';
 
-const devURL = 'http://10.0.2.2:3000/api/';
 
 if (__DEV__) {
-  axios.defaults.baseURL = 'http://10.0.2.2:3000/api/'; 
+  axios.defaults.baseURL = Platform.OS === 'ios' ? 
+  'http://localhost:3000/api/' : 'http://10.0.2.2:3000/api/';
 } else { 
   axios.defaults.baseURL = 'whateverourAPIis'; 
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import MapView from 'react-native-maps';
 import { 
     clearStorage 
   } from '../store/actions';
@@ -14,14 +15,25 @@ class TaskList extends Component {
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View>
                 <Text>
                     Task List
                 </Text>
                 <Button onPress={this.logout.bind(this)}>
                     Logout
                 </Button>
-            </View>            
+
+                <MapView
+                    style={styles.map}
+                    initialRegion={{
+                    latitude: 37.78825,
+                    longitude: -122.4324,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                    }}
+                />
+            </View>     
+                   
         );
     }
 }
@@ -30,5 +42,12 @@ const mapStateToProps = ({ auth }) => {
     const { email, password, error, loading, auth_token } = auth;
     return ({ email, password, error, loading, auth_token });
   };
+
+const styles = {
+    map: {
+        height: 250,
+        width: ' 100%'
+    }
+};
   
-  export default connect(mapStateToProps, { clearStorage })(TaskList);
+export default connect(mapStateToProps, { clearStorage })(TaskList);

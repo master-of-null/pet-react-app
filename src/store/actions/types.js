@@ -1,0 +1,6 @@
+export const PASSWORD_CHANGED = 'PASSWORD_CHANGED';
+export const EMAIL_CHANGED = 'EMAIL_CHANGED';
+export const LOAD_SPINNER = 'LOAD_SPINNER';
+export const SET_AUTH = 'SET_AUTH';
+export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
+export const LOGOUT_USER = 'LOGOUT_USER';
